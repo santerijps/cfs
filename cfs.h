@@ -1,6 +1,6 @@
-#ifndef CPATH_H
+#ifndef CFS_H
 
-  #define CPATH_H
+  #define CFS_H
 
   #ifndef _INC_STDIO
     #include <stdio.h>
