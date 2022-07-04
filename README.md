@@ -1,6 +1,6 @@
-# cpath
+# cfs
 
-`cpath` is a file system path utility library for the C programming language.
+`cfs` is a file system utility library for the C programming language.
 
 **NOTE!** This library cannot be build with `tcc`. Use `gcc` or `clang` instead.
 
