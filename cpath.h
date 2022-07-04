@@ -1,6 +1,6 @@
-#ifndef PATHUTIL_H
+#ifndef CPATH_H
 
-  #define PATHUTIL_H
+  #define CPATH_H
 
   #ifndef _INC_STDIO
     #include <stdio.h>

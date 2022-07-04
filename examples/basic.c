@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../pathutil.h"
+#include "../cpath.h"
 
 int main() {
   char *path = path_join(3, path_cwd(), ".git", "hooks");

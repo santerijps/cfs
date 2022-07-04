@@ -1,6 +1,6 @@
-# pathutil
+# cpath
 
-Path utility library for the C programming language.
+`cpath` is a file system path utility library for the C programming language.
 
 **NOTE!** This library cannot be build with `tcc`. Use `gcc` or `clang` instead.
 
