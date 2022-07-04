@@ -13,5 +13,8 @@ int main() {
   fs_write_file("world.txt", "Hello, world!\n");
   char *s = fs_read_file("cfs.h");
   printf("%s\n", s);
+  fs_create_dir("hello");
+  getchar();
+  fs_remove_dir("hello");
   return 0;
 }

@@ -77,6 +77,16 @@
   */
   char* fs_read_file(const char *path);
 
+  /**
+   * Creates a directory.
+  */
+  int fs_create_dir(const char *path);
+
+  /**
+   * Removes a directory.
+  */
+  int fs_remove_dir(const char *path);
+
   _Bool path_exists(const char *path) {
     return access(path, F_OK) == 0;
   }
@@ -200,6 +210,14 @@
       fclose(f);
     }
     return data;
+  }
+
+  int fs_create_dir(const char *path) {
+    return mkdir(path);
+  }
+
+  int fs_remove_dir(const char *path) {
+    return rmdir(path);
   }
 
 #endif
