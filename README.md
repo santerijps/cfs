@@ -51,4 +51,14 @@
    * Reads the contents of a file.
   */
   char* fs_read_file(const char *path);
+
+  /**
+   * Creates a directory.
+  */
+  int fs_create_dir(const char *path);
+
+  /**
+   * Removes a directory.
+  */
+  int fs_remove_dir(const char *path);
 ```
