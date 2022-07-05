@@ -87,7 +87,7 @@
   */
   int fs_remove_dir(const char *path);
 
-  _Bool path_exists(const char *path) {
+  _Bool fs_path_exists(const char *path) {
     return access(path, F_OK) == 0;
   }
 
