@@ -213,11 +213,11 @@
   }
 
   int fs_create_dir(const char *path) {
-    return mkdir(path);
+    return mkdir(path) == 0;
   }
 
   int fs_remove_dir(const char *path) {
-    return rmdir(path);
+    return rmdir(path) == 0;
   }
 
 #endif
