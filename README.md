@@ -1,6 +1,6 @@
 # cfs
 
-`cfs` is a file system utility library for the C programming language.
+`cfs` is a file system utility library for the C programming language. The purpose of this library is to provide functions for common file system operations, such as reading and writing to files.
 
 **NOTE!** This library cannot be build with `tcc`. Use `gcc` or `clang` instead.
 
