@@ -183,32 +183,22 @@
 
   char* fs_read_file(const char *path) {
     FILE *f = fopen(path, "r");
-    size_t bytes_read, cap = BUFSIZ * 4, len = 0;
-    char *data = NULL, buf[BUFSIZ];
+    size_t size;
+    char *data = NULL;
 
     if (f != NULL) {
 
-      while (!feof(f)) {
-        memset(buf, 0, BUFSIZ);
-        bytes_read = fread(buf, sizeof(char), BUFSIZ, f);
+      fseek(f, 0, SEEK_END);
+      size = ftell(f);
+      fseek(f, 0, SEEK_SET);
 
-        if (data == NULL) {
-          data = (char*) malloc(sizeof(char) * cap);
-          memset(data, 0, cap);
-        }
-
-        len += bytes_read;
-
-        if (len >= cap) {
-          cap *= 2;
-          data = (char*) realloc(data, cap);
-        }
-
-        strcat(data, buf);
-      }
-
+      data = malloc(sizeof(char) * size + 1);
+      fread(data, sizeof(char), size, f);
+      data[size] = '\0';
       fclose(f);
+
     }
+
     return data;
   }
 
