@@ -57,6 +57,12 @@
   char* fs_basename(char *path);
 
   /**
+   * Joins two strings together with the OS appropriate delimiter.
+   * This function is more stable than fs_path_join.
+  */
+  char* fs_join(char *a, char *b);
+
+  /**
    * Joins all strings together with a / or a \ depending on the OS.
   */
   char* fs_path_join(int argc, ...);
@@ -139,6 +145,22 @@
       }
     }
     return path;
+  }
+
+  char* fs_join(char *a, char *b) {
+    size_t size = strlen(a) + strlen(b) + 2;
+    char *c = malloc(size);
+    if (c != NULL) {
+      strcpy(c, a);
+      #ifdef _WIN32
+        strcat(c, "\\");
+      #else
+        strcat(c, "/");
+      #endif
+      strcat(c, b);
+      c[size - 1] = '\0';
+    }
+    return c;
   }
 
   char* fs_path_join(int argc, ...) {

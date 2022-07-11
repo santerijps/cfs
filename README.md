@@ -28,6 +28,12 @@ _Bool fs_is_file(const char *path);
 char* fs_basename(char *path);
 
 /**
+ * Joins two strings together with the OS appropriate delimiter.
+ * This function is more stable than fs_path_join.
+*/
+char* fs_join(char *a, char *b);
+
+/**
  * Joins all strings together with a / or a \ depending on the OS.
 */
 char* fs_path_join(int argc, ...);
