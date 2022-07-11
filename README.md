@@ -23,6 +23,11 @@ _Bool fs_is_dir(const char *path);
 _Bool fs_is_file(const char *path);
 
 /**
+ * Returns the basename of a path.
+*/
+char* fs_basename(char *path);
+
+/**
  * Joins all strings together with a / or a \ depending on the OS.
 */
 char* fs_path_join(int argc, ...);

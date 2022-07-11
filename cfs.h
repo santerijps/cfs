@@ -52,6 +52,11 @@
   _Bool fs_is_file(const char *path);
 
   /**
+   * Returns the basename of a path.
+  */
+  char* fs_basename(char *path);
+
+  /**
    * Joins all strings together with a / or a \ depending on the OS.
   */
   char* fs_path_join(int argc, ...);
@@ -119,6 +124,21 @@
       return 0;
     }
     return S_ISREG(s.st_mode);
+  }
+
+  char* fs_basename(char *path) {
+    int len = strlen(path);
+    if (path[len - 1] == '\\' || path[len - 1] == '/') {
+      path[len - 1] = '\0';
+      len -= 1;
+    }
+    while (len--) {
+      if (path[len] == '\\' || path[len] == '/') {
+        path = &(path[len + 1]);
+        break;
+      }
+    }
+    return path;
   }
 
   char* fs_path_join(int argc, ...) {
