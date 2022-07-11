@@ -30,12 +30,26 @@
     #include <stdarg.h>
   #endif
 
+  #ifndef _INC_STAT
+    #include <sys/stat.h>
+  #endif
+
   #define PATH_MAX_LEN 100
 
   /**
    * Checks if a file or directory exists.
   */
   _Bool fs_path_exists(const char *path);
+
+  /**
+   * Checks if the path points to a directory.
+  */
+  _Bool fs_is_dir(const char *path);
+
+  /**
+   * Checks if the path points to a file.
+  */
+  _Bool fs_is_file(const char *path);
 
   /**
    * Joins all strings together with a / or a \ depending on the OS.
@@ -89,6 +103,22 @@
 
   _Bool fs_path_exists(const char *path) {
     return access(path, F_OK) == 0;
+  }
+
+  _Bool fs_is_dir(const char *path) {
+    struct stat s;
+    if (stat(path, &s) != 0) {
+      return 0;
+    }
+    return S_ISDIR(s.st_mode);
+  }
+
+  _Bool fs_is_file(const char *path) {
+    struct stat s;
+    if (stat(path, &s) != 0) {
+      return 0;
+    }
+    return S_ISREG(s.st_mode);
   }
 
   char* fs_path_join(int argc, ...) {
