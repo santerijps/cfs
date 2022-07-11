@@ -2,63 +2,73 @@
 
 `cfs` is a file system utility library for the C programming language. The purpose of this library is to provide functions for common file system operations, such as reading and writing to files.
 
-**NOTE!** This library cannot be build with `tcc`. Use `gcc` or `clang` instead.
+**NOTE!** This library cannot be built with `tcc`. Use `gcc` or `clang` instead.
 
 ## Functions
 
 ```c
-  /**
-   * Checks if a file or directory exists.
-  */
-  _Bool fs_path_exists(const char *path);
+/**
+ * Checks if a file or directory exists.
+*/
+_Bool fs_path_exists(const char *path);
 
-  /**
-   * Joins all strings together with a / or a \ depending on the OS.
-  */
-  char* fs_path_join(int argc, ...);
+/**
+ * Checks if the path points to a directory.
+*/
+_Bool fs_is_dir(const char *path);
 
-  /**
-   * Returns the absolute path to the current working directory.
-  */
-  char* fs_cwd(void);
+/**
+ * Checks if the path points to a file.
+*/
+_Bool fs_is_file(const char *path);
 
-  /**
-   * Returns the absolute path to the user's home directory.
-  */
-  char* fs_home_dir(void);
+/**
+ * Joins all strings together with a / or a \ depending on the OS.
+*/
+char* fs_path_join(int argc, ...);
 
-  /**
-   * Prints all files and directories in the given path.
-  */
-  void fs_print_files_and_directories(const char *path);
+/**
+ * Returns the absolute path to the current working directory.
+*/
+char* fs_cwd(void);
 
-  /**
-   * Creates a file. Returns 1 if successful.
-  */
-  _Bool fs_create_file(const char *path);
+/**
+ * Returns the absolute path to the user's home directory.
+*/
+char* fs_home_dir(void);
 
-  /**
-   * Removes a file. Returns 1 if successful.
-  */
-  _Bool fs_remove_file(const char *path);
+/**
+ * Prints all files and directories in the given path.
+*/
+void fs_print_files_and_directories(const char *path);
 
-  /**
-   * Writes to a file. Creates a file if it doesn't exist.
-  */
-  _Bool fs_write_file(const char *path, const char *data);
+/**
+ * Creates a file. Returns 1 if successful.
+*/
+_Bool fs_create_file(const char *path);
 
-  /**
-   * Reads the contents of a file.
-  */
-  char* fs_read_file(const char *path);
+/**
+ * Removes a file. Returns 1 if successful.
+*/
+_Bool fs_remove_file(const char *path);
 
-  /**
-   * Creates a directory.
-  */
-  int fs_create_dir(const char *path);
+/**
+ * Writes to a file. Creates a file if it doesn't exist.
+*/
+_Bool fs_write_file(const char *path, const char *data);
 
-  /**
-   * Removes a directory.
-  */
-  int fs_remove_dir(const char *path);
+/**
+ * Reads the contents of a file.
+*/
+char* fs_read_file(const char *path);
+
+/**
+ * Creates a directory.
+*/
+int fs_create_dir(const char *path);
+
+/**
+ * Removes a directory.
+*/
+int fs_remove_dir(const char *path);
 ```
